@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+	   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	   <meta name="viewport" content="width=device-width, initial-scale=1" /> 
+       <title>CriticalSecurityLLC.com</title>
+       <link rel="stylesheet" href="css/style.css"/>
+	   <script type="text/javascript" src="js/jquery-1.10.2.min.js"></script>
+	<script>
+   
+
+$(document).ready(function() {
+  setTargets(1000);
+});
+
+$(window).on('resize', function(){
+	waitForFinalEvent(function(){
+		setTargets(100);
+	}, 500, "an unique string");
+});
+
+<!----- JQUERY FOR SLIDING NAVIGATION --->   
+function setTargets(delay) {$('a[href*=#]').each(function() {
+    if (location.pathname.replace(/^\//,'') == this.pathname.replace(/^\//,'')
+    && location.hostname == this.hostname
+    && this.hash.replace(/#/,'') ) {
+      var $targetId = $(this.hash), $targetAnchor = $('[name=' + this.hash.slice(1) +']');
+      var $target = $targetId.length ? $targetId : $targetAnchor.length ? $targetAnchor : false;
+       if ($target) {
+         var targetOffset = $target.offset().top;
+
+<!----- JQUERY CLICK FUNCTION REMOVE AND ADD CLASS "ACTIVE" + SCROLL TO THE #DIV--->   
+         $(this).click(function() {
+            $("#nav li a").removeClass("active");
+            $(this).addClass('active');
+           $('html, body').animate({scrollTop: targetOffset}, delay);
+           return false;
+         });
+      }
+    }
+  });
+};
+
+var waitForFinalEvent = (function () {
+  var timers = {};
+  return function (callback, ms, uniqueId) {
+    if (!uniqueId) {
+      uniqueId = "Don't call this twice without a uniqueId";
+    }
+    if (timers[uniqueId]) {
+      clearTimeout (timers[uniqueId]);
+    }
+    timers[uniqueId] = setTimeout(callback, ms);
+  };
+})();
+
+</script>
+
+
+ </head> 
+	
+<body>
+
+<!----- TOP BAR--->   
+<header id="header">
+
+<div class="section">
+<div id="logo"><a href="">Critical Security LLC</a></div>
+	<nav id="nav">
+		<ul>
+			<li><a href="#home_section" class="active" title="Next Section" >Home</a></li>
+			<li><a href="#about_section" title="Next Section">About</a></li>
+			<li><a href="#mission_section" title="Next Section">Mission</a></li>
+			<li><a href="#contact_section" title="Next Section">Contact</a></li>
+		</ul>
+	</nav>
+</div>
+</div>
+
+</header>	
+<!----- TOP BAR END--->   
+
+<!----- SECTIONS START --->   	
+<div id="home_section">
+	<div class="section">
+	        <h2>Critical Security LLC</h2>
+		<div id="divider"> </div>
+		<h3>Physical and Cyber Security Experts</h3>
+	</div> 
+</div> 
+
+<div id="about_section">
+	<div class="section" >
+        	<div class="section_content">
+			<h2>About</h2>
+			<h3 class="quotes">Critical Security are experts in physical and cyber security.</h3>
+		</div> 
+	</div> 
+</div> 
+	
+	
+<div id="mission_section">
+	<div class="section">
+		<div class="section_content">
+			<h2>Mission</h2>
+			<h3 class="quotes">A lot of exciting things are happening.  Check back soon or contact us.</h3>
+		</div> 
+	</div> 
+</div> 
+	
+	
+<div id="contact_section">
+	<div class="section">
+		<div class="section_content">
+			<h2>Contact</h2>
+			<h3 class="quotes">Get in touch with us at helloworld@criticalsecurityllc.com</h3>
+		</div> 
+	</div> 
+	<div id="copyright">
+		<a href="http://CriticalSecurityLLC.com/">Copyright 2020 Critical Security LLC</a>
+	</div>
+</div> 
+	
+<!----- SECTIONS END --->
+
+</body>
+</html>
